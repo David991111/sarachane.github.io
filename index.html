@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SARACHANEYE GİRERKEN HAZIRLIK</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background: #0c7398;
+            color: white;
+            position: relative;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        h1, h2 {
+            margin: 10px 0;
+        }
+        #equipment-container, #rating-container {
+            margin: 20px auto;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+        button:hover {
+            background-color: #e67e22;
+        }
+        
+        /* Üstteki Büyük GIF'ler */
+        .top-gif {
+            position: fixed;
+            top: 10px;
+            width: 300px;
+            height: 700px;
+            display: none;
+            z-index: 100;
+        }
+        #top-left {
+            left: 10px;
+        }
+        #top-right {
+            right: 10px;
+        }
+        
+        /* Alttaki Küçük GIF'ler */
+        .anime-girl {
+            position: fixed;
+            bottom: 20px;
+            width: 150px;
+            height: auto;
+            display: none;
+            z-index: 100;
+        }
+        #girl-left {
+            left: 10px;
+        }
+        #girl-right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Müzik -->
+    <audio id="background-music" loop>
+        <source src="rap.mp3" type="audio/mp3">
+        Tarayıcınız müziği desteklemiyor.
+    </audio>
+
+    <!-- ÜSTTEKİ BÜYÜK GIF'LER -->
+    <img id="top-left" class="top-gif" src="https://i.gifer.com/RsVc.gif" alt="Dans eden anime kızı">
+    <img id="top-right" class="top-gif" src="https://i.gifer.com/ZLnU.gif" alt="Muharrem İnce dansı">
+
+    <!-- ALTTAKİ KÜÇÜK GIF'LER -->
+    <img id="girl-left" class="anime-girl" src="https://i.gifer.com/3ww9.gif" alt="Dans eden anime kızı">
+    <img id="girl-right" class="anime-girl" src="https://i.gifer.com/Paw.gif" alt="Dans eden anime kızı">
+
+    <h1>SARACHANEYE GİRERKEN HAZIRLIK</h1>
+    <p>Hazırlığını yap, donanımını seç ve destansı bir şekilde giriş yap!</p>
+    
+    <button onclick="getRandomGear()">Ekipmanı Seç</button>
+    
+    <div id="equipment-container">
+        <h2 id="helmet-name"></h2>
+        <h2 id="armor-name"></h2>
+        <h2 id="shoes-name"></h2>
+        <h2 id="weapon-name"></h2>
+    </div>
+    
+    <div id="rating-container">
+        <h2 id="rating"></h2>
+        <p id="joke"></p>
+    </div>
+    
+    <script>
+        async function getRandomGear() {
+            try {
+                const music = document.getElementById("background-music");
+                music.play().then(() => {
+                    // Tüm GIF'leri göster
+                    document.getElementById("top-left").style.display = "block";
+                    document.getElementById("top-right").style.display = "block";
+                    document.getElementById("girl-left").style.display = "block";
+                    document.getElementById("girl-right").style.display = "block";
+                }).catch(e => console.log("Müzik çalınamadı: ", e));
+
+                let helmets = ["Shoei RF-1400", "AGV K6", "Arai Corsair-X"];
+                let armors = ["Kara Şövalye Zırhı", "Modern Kevlar Yelek", "Viking Zırhı"];
+                let shoes = ["Nike Air Max 97", "Çelik Burunlu İş Botu", "Adidas Yeezy"];
+                let weapons = ["Katana", "Desert Eagle", "Tava"];
+                
+                let ratings = ["3/10 - Çaylak bile daha iyi giyinir.", "5/10 - Fena değil, ama eksik bir şeyler var.", "7/10 - Sarachane için idare eder.", "9/10 - Helal olsun, saygı duyduk!", "10/10 - Kral geri döndü! 🏆"];
+                let jokes = ["Sarachane'de son gören var mı? Yoksa hâlâ giriyor mu?", "Bu kombinle gidersen belki seni sokmazlar!", "Şu zırhı giyince internet hızın artıyor mu?", "Bu ayakkabılarla kaçış hızın %50 artar!", "Silahını seçtin, peki stratejin ne? Kaçmak mı? 😆"];
+                
+                document.getElementById("helmet-name").innerText = "Kask: " + helmets[Math.floor(Math.random() * helmets.length)];
+                document.getElementById("armor-name").innerText = "Zırh: " + armors[Math.floor(Math.random() * armors.length)];
+                document.getElementById("shoes-name").innerText = "Ayakkabı: " + shoes[Math.floor(Math.random() * shoes.length)];
+                document.getElementById("weapon-name").innerText = "Silah: " + weapons[Math.floor(Math.random() * weapons.length)];
+                
+                document.getElementById("rating").innerText = "Kombin Puanı: " + ratings[Math.floor(Math.random() * ratings.length)];
+                document.getElementById("joke").innerText = "💬 " + jokes[Math.floor(Math.random() * jokes.length)];
+            } catch (error) {
+                console.error("Hata oluştu:", error);
+                alert("Bir şeyler yanlış gitti. Tekrar dene!");
+            }
+        }
+    </script>
+</body>
+</html>
